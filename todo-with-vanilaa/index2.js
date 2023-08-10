@@ -63,9 +63,7 @@ const reviseTodo = (targetId,work) => {
 
 const addCategory = (category) => {
     console.log({label:category,deleted:false});
-    if(!category){
-        alert('카테고리가 입력되지 않았습니다.')}
-    else if (categorylist.indexOf({label:category,deleted:false})!==-1){
+    if (categorylist.indexOf({label:category,deleted:false})!==-1){
         alert('해당카테고리가 이미 존재합니다.');
     }
     else{
@@ -88,63 +86,48 @@ const renderTodo = async (todo) => {
    todoWrapper.id = todo.id;
    todoWrapper.draggable = true;
 
-   const todoCompleteWraper = document.createElement('div');
-   todoCompleteWraper.classList.add('todo-complete-wrapper');
-   todoWrapper.appendChild(todoCompleteWraper);
-
-   const completeButton = document.createElement('input');
-   completeButton.classList.add('todo-action');
-   completeButton.classList.add('complete');
-   completeButton.type='checkbox';
-   
-   
-    
-   if (!todo.completed){
-        completeButton.checked=false;
-        // todoWrapper.classList.toggle("completed-todo");
-        // window.onload();
-    }
-   else {
-       completeButton.checked=true;
-       todoWrapper.classList.toggle("completed-todo"); 
-    //    window.onload();
-    //    window.onload();
-    }
-   todoCompleteWraper.appendChild(completeButton);
-
-   function completeclick(){
-        completeTodo(todo.id);
-        renderTodoList();
-}
-   completeButton.addEventListener('click', completeclick);
-
    const todoLabel = document.createElement('p');
    todoLabel.className="todo-label";
-   todoCompleteWraper.appendChild(todoLabel)
+   todoWrapper.appendChild(todoLabel)
    todoLabel.innerText=todo.label;
    
    const todoActionWrapper = document.createElement('div');
    todoActionWrapper.className="todo-action-wrapper";
    todoWrapper.appendChild(todoActionWrapper);
    
+   const completeButton = document.createElement('button');
+   completeButton.classList.add('todo-action');
+   completeButton.classList.add('complete');
+   
+   
+    
+   if (!todo.completed){
+        completeButton.innerText="완료";
+        // todoWrapper.classList.toggle("completed-todo");
+        // window.onload();
+    }
+   else {
+       completeButton.innerText="미완료";
+       todoWrapper.classList.toggle("completed-todo");
+    //    window.onload();
+    //    window.onload();
+    }
+   todoActionWrapper.appendChild(completeButton);
 
-//    completeButton.onclick = () => {
-//         // let div=document.getEleme/ntById(todo.id);
-//         // console.log(div);
-//         // div.classList.toggle("completed-todo");
-//         // event.target.parentElement.parentElement.classList.toggle("completed-todo");
-//         completeTodo(todo.id);
-//         renderTodoList();
-//     };
+   completeButton.onclick = () => {
+        // let div=document.getEleme/ntById(todo.id);
+        // console.log(div);
+        // div.classList.toggle("completed-todo");
+        // event.target.parentElement.parentElement.classList.toggle("completed-todo");
+        completeTodo(todo.id);
+        renderTodoList();
+    };
 
    const deleteButton = document.createElement('button'); 
    deleteButton.classList.add('todo-action');
    deleteButton.classList.add('delete');
    todoActionWrapper.appendChild(deleteButton); 
-//    deleteButton.innerText='삭제';
-   deleteimg = document.createElement('img');
-   deleteimg.src = "https://littledeep.com/wp-content/uploads/2020/09/trash-can-icon-style.png";
-   deleteButton.appendChild(deleteimg);
+   deleteButton.innerText='삭제';
    deleteButton.onclick = () => {
     deleteTodo(todo.id);
     renderTodoList();
@@ -154,14 +137,12 @@ const renderTodo = async (todo) => {
 
    const addButton = document.getElementById('add-action');
    addButton.onclick = () => {
-    let work = document.getElementById("action-input");
-    let value = work.value;
-    if(value===null || value ==""){
+    let work = prompt("할 일을 적어주세요");
+    if(work===null || work ==""){
         alert('할 일이 적혀있지 않습니다');
     }
     else{
-     addTodo(value);
-     work.value=""   
+     addTodo(work);   
      renderTodoList();
     }
    };
@@ -176,12 +157,7 @@ const renderTodo = async (todo) => {
    reviseButton.classList.add('todo-action');
    reviseButton.classList.add('revise');
    todoActionWrapper.appendChild(reviseButton);
-//    reviseButton.innerText='수정';
-
-   const reviseimg = document.createElement('img');
-   reviseimg.src = "https://cdn.icon-icons.com/icons2/620/PNG/512/pencil-striped-symbol-for-interface-edit-buttons_icon-icons.com_56782.png";
-   reviseButton.appendChild(reviseimg);
-
+   reviseButton.innerText='수정';
 
    reviseButton.onclick = () => {
     let work = prompt("수정할 일을 적어주세요");

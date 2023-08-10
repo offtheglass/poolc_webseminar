@@ -1,13 +1,30 @@
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'SDSamliphopangche_Outline';
+}
 body{
     margin: 0;
-    font-family: Arial;
+    /* font-family: 'SDSamliphopangche_Outline'; */
     padding: 20px;
 }
 
 h1, h2, h3, h4, h5, h6, p{
     margin:0;
 }
-
+img{
+    width: 23.036px;
+    height: 12px;
+    object-fit: fill;
+}
+fieldset{
+    border-radius: 10px;
+}
 #title{
     text-align: center;
 }
@@ -25,6 +42,12 @@ h1, h2, h3, h4, h5, h6, p{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: rgb(197, 248, 248);
+    margin-bottom: 7px;
+    border-radius: 10px;
+}
+.todo-complete-wrapper{
+    display:flex;
 }
 .todo-label{
     font-size: 20px;
@@ -34,35 +57,63 @@ h1, h2, h3, h4, h5, h6, p{
     border: none;
     
     padding: 7px 15px;
-    background-color: lightgray;
+    /* background-color: lightgray; */
     border-radius: 10px;
 
 }
 
 .complete{
-    background-color: pink;
+    /* background-color: rgb(228, 217, 217); */
     color: white;
 }
 
 .delete {
-    background-color: rgb(33, 151, 214);
-    color:white;
+    background-color: rgb(228, 217, 217);
+    /* color:white;  */
 }
+.revise {
+    background-color: rgb(228, 217, 217);
+    /* color:white;  */
+} 
 .completed-todo{
     text-decoration: line-through;
+    background-color: bisque;
 }
-action-wrapper{
+#action-wrapper{
     margin-top: 40px;
     text-align: center;
 }
 #add-action{
-    width: 48px;
+    width: 7%;
     height: 48px;
     border-radius: 50%;
     background: none;
     border:none;
+    background-color: rgb(138, 238, 149);
+    box-shadow: 0 0 10px lightgray;
+    font-size: 30px;
+}
+#action-input{
+    width: 90%;
+    height: 48px;
+    border-radius: 10px;
+    background: none;
+    border:none;
     background-color: white;
     box-shadow: 0 0 10px lightgray;
+    font-size: 30px;
+}
+#input-wrapper{
+    margin-top: 10px;
+}
+#add-category{
+    width: 15%;
+    height: 30%;
+    border-radius: 10px;
+    background: none;
+    border:none;
+    background-color: rgb(136, 232, 195);
+    box-shadow: 0 0 10px rgb(165, 142, 241);
 
     font-size: 30px;
 }
